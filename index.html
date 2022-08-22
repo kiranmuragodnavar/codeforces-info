@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <script src="index.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+</head>
+
+<body>
+    <nav class="navbar" style="background-color: #e3f2fd;">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">CF-INFO</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Compare</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+            </div>
+        </div>
+    </nav>
+
+
+
+
+
+    <div style="display:flex;justify-content: center;">
+        <img src="data:image/png;base64,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"
+            alt="">
+    </div>
+
+    <br><br><br>
+    <div style="display:flex;justify-content:center">
+        <h4>Enter your Codeforces Handle:</h4>
+    </div>
+    <br>
+    <div class="container-fluid" style="display:flex; justify-content:center; width:55%">
+
+        <input class="form-control me-2" placeholder="Enter your username" id="bt" type="search">
+        <a href="#stats">
+
+            <button id="btn" class="btn btn-outline-success" type="button">Search</button>
+
+        </a>
+
+    </div>
+
+    <div id="hidee">
+        <br><br><br>
+
+        <div style="display: flex; justify-content:center; width:100%">
+
+            <div class="card" style="width: 30%;">
+                <img src="https://cdn-userpic.codeforces.com/no-title.jpg" id="photo"
+                    style="width:60%; display: block; margin-left:auto; margin-right:auto;" alt="...">
+                <div class="card-body">
+                    <ul class="list-group">
+                        <li id="info-tab" class="list-group-item active" aria-current="true"
+                            style="text-align: center;background-color: black;">-- -- </li>
+                    </ul>
+                    <table class="table table-borderless">
+
+                        <tbody>
+                            <tr>
+                                <td>First Name</td>
+                                <td id="firstname">-- </td>
+                            </tr>
+                            <tr>
+                                <td>Last Name</td>
+                                <td id="lastname">--</td>
+                            </tr>
+                            <tr>
+                                <td>Country</td>
+                                <td id="country">--</td>
+                            </tr>
+                            <tr>
+                                <td>City</td>
+                                <td id="city">--</td>
+                            </tr>
+                            <tr>
+                                <td>Organization</td>
+                                <td id="organization">--</td>
+                            </tr>
+                            <tr>
+                                <td> Rating</td>
+                                <td id="currentrating">--</td>
+                            </tr>
+                            <tr>
+                                <td>Friend of</td>
+                                <td id="friendof">--</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <br>
+        <h4 style="text-align: center">User Stats:</h4>
+
+
+        <div style="display:flex;justify-content:center;">
+            <table class="table table-borderless" style="width:60%;margin-left: 13%;">
+                <tbody>
+                    <tr>
+                        <td>Contests</td>
+                        <td id="contests">--</td>
+                    </tr>
+                    <tr>
+                        <td>Best Rank</td>
+                        <td id="bestrank">--</td>
+                    </tr>
+                    <tr>
+                        <td>Worst Rank</td>
+                        <td id="worstrank">--</td>
+                    </tr>
+                    <tr>
+                        <td>Max Rating Change</td>
+                        <td id="maxratingchange">--</td>
+                    </tr>
+                    <tr>
+                        <td>Total Submissions</td>
+                        <td id="totalsub">--</td>
+                    </tr>
+                    <tr>
+                        <td>Total AC </td>
+                        <td id="accepted">--</td>
+                    </tr>
+                    <tr>
+                        <td>Total Tried(Unique Questions) </td>
+                        <td id="tried">--</td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+        </div>
+        <br>
+        <h4 style="text-align: center">Unsolved Problems:</h4>
+        <div style="display:flex;justify-content:center;">
+            <table id="table1" class="table table-borderless" style="width:50%;margin-left: 5%;"></table>
+
+        </div>
+    </div>
+
+    <br><br>
+    <div style="display: flex; justify-content:center; width:100%">
+        <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+    </div>
+
+
+    <br><br>
+    <div style="display: flex; justify-content:center; width:100%">
+        <canvas id="myChart1" style="width:70%;max-width:600px"></canvas>
+    </div>
+
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+
+</html>
